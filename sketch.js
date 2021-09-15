@@ -2,7 +2,7 @@ const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
-
+var speed;
 function preload(){
     polygonImg = loadImage("polygon.png");
 }
@@ -64,6 +64,7 @@ function draw(){
     slingshot.display();
     imageMode(CENTER);
     image(polygonImg,ball.position.x,ball.position.y,40,40)
+    keypressed();
 }
 
 function mouseDragged(){
@@ -72,4 +73,10 @@ function mouseDragged(){
 
 function mouseReleased(){
     slingshot.fly();
+}
+
+function keypressed(){
+    if (keyCode === 32){
+        slingshot.attach(this.polygon)
+    }
 }

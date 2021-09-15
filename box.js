@@ -8,13 +8,23 @@ class Box {
     this.width = width;
     this.height = height;
     World.add(world,this.body)
-    
+    this.Visibility = 255;
       
     }
     display(){
+      if (this.body.speed < 3){
       var pos = this.body.position;
       rectMode(CENTER);
       rect(pos.x,pos.y,this.width,this.height)
-    }
+      }
+      else{
+        World.remove(world,this.body);
+        push();
+        this.Visibility = this.Visibility - 5;
+        tint(255,this.Visibility)
+        image(this.image,this.body.position.x,this.body.position.y,this.width,this.height);
+        pop();
+      }
+    }  
   };
   
